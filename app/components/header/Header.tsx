@@ -2,9 +2,10 @@
 'use client';
 
 import { logOut } from '@/app/store/slices/userSlice';
+import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 
-export default function Header() {
+const Header = () => {
   const user = useSelector((state: any) => state.user);
   const dispatch = useDispatch();
 
@@ -17,8 +18,13 @@ export default function Header() {
           <button onClick={() => dispatch(logOut())}>Logout</button>
         </div>
       ) : (
-        <button>Login</button>
+        <div className="container mx-auto flex justify-between items-center">
+              <Link href="/login" className="text-white">Login</Link>
+              <Link href="/dashboard" className="text-white">Dashboard</Link>
+            </div>
       )}
     </header>
   );
 }
+ 
+export default Header;
