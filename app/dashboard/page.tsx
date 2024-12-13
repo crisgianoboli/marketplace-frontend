@@ -13,7 +13,11 @@ const Dashboard = () => {
     if (!user.loggedIn) {
       router.push('/login');
     }
-  }, [user.loggedIn]);
+  }, [user.loggedIn, router]);
+
+  if (!user.loggedIn) {
+    return null;
+  }
 
   return (
      <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
